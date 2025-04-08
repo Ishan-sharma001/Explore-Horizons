@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ExploreHorizons | Packages</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .packages-section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .packages-section h2 {
+      font-size: 2.5rem;
+      color: #b28fff;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .package-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(178, 143, 255, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(178, 143, 255, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .package-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 30px rgba(178, 143, 255, 0.3);
+    }
+
+    .package-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .package-details {
+      padding: 1.5rem;
+    }
+
+    .package-details h3 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .package-details p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    .package-info {
+      font-size: 0.95rem;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+
+    .btn-glow {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      background: #b28fff;
+      color: #000;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-glow:hover {
+      background: #d3b8ff;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      z-index: 99;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 1rem;
+    }
+
+    .modal-content button {
+      margin-top: 1rem;
+      background: #b28fff;
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 30px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">🌍 ExploreHorizons</div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="packages-section">
+    <h2>🌄 Adventure Packages</h2>
+    <div class="package-grid">
+      <div class="package-card">
+        <img src="images/Landscape Meru Betiri NP - East Java. Image credit Francesco Veronesi, CC BY-SA 2.0.webp" alt="Bali">
+        <div class="package-details">
+          <h3>Bali Escape</h3>
+          <p>Experience the beaches, culture, and volcanoes of Bali.</p>
+          <div class="package-info">💰 ₹39,999 | ⏳ 5 Days</div>
+          <div class="btn-glow" onclick="openModal('Bali Escape')">Book Now</div>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <img src="images/Japan-2107x1406.webp" alt="Japan">
+        <div class="package-details">
+          <h3>Japan Discovery</h3>
+          <p>Tech cities and tranquil temples in a perfect combo.</p>
+          <div class="package-info">💰 ₹64,999 | ⏳ 7 Days</div>
+          <div class="btn-glow" onclick="openModal('Japan Discovery')">Book Now</div>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <img src="images/DSCF8935.webp" alt="Swiss Alps">
+        <div class="package-details">
+          <h3>Swiss Alps</h3>
+          <p>Snowy peaks, scenic trains, and chocolate adventures.</p>
+          <div class="package-info">💰 ₹79,999 | ⏳ 6 Days</div>
+          <div class="btn-glow" onclick="openModal('Swiss Alps')">Book Now</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalPackageName">Booking Package</h2>
+      <p>Thank you for choosing us! Our team will contact you shortly.</p>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    function openModal(packageName) {
+      document.getElementById("bookingModal").style.display = "flex";
+      document.getElementById("modalPackageName").innerText = "Booking: " + packageName;
+    }
+
+    function closeModal() {
+      document.getElementById("bookingModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>

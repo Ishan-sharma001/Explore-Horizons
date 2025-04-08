@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Horizons | About Us</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ===== Navbar ===== */
+    /* Navbar Base */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: rgba(15, 14, 23, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    box-shadow: 0 0 10px #b28fff66;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    color: #b28fff;
+    font-weight: bold;
+    text-shadow: 0 0 8px #b28fff;
+  }
+  
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  /* Nav Links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+  
+  .nav-links li a:hover {
+    color: #b28fff;
+    text-shadow: 0 0 8px #b28fff;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  
+    .nav-links {
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background: rgba(15, 14, 23, 0.95);
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: none;
+    }
+  
+    .nav-links.show {
+      display: flex;
+    }
+  }
+  
+
+  
+
+    /* ===== About Section ===== */
+    #about {
+      background: radial-gradient(circle, #0e0e1a, #14121e);
+      color: #fff;
+      padding: 8rem 2rem 6rem;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .about-content {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      animation: floatUp 5s ease-in-out infinite alternate;
+    }
+
+    .about-section h2 {
+      font-size: 2.5rem;
+      color: #b28fff;
+      margin-bottom: 2rem;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #ccc;
+    }
+
+    .about-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .about-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(178, 143, 255, 0.2);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 20px rgba(178, 143, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about-box:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 30px rgba(178, 143, 255, 0.3);
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    canvas#aboutParticles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    #gallery {
+  background: linear-gradient(to right, #0f0f1e, #1c1a2e);
+  padding: 5rem 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #b28fff;
+  margin-bottom: 3rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+.gallery-img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(178, 143, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(178, 143, 255, 0.6);
+}
+
+/* Lightbox Modal */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(178, 143, 255, 0.7);
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar">
+    <div class="logo">🌍 ExploreHorizons</div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== About Section ===== -->
+  <section id="about" class="about-section scroll-animate">
+    <div class="about-content">
+      <h2>🌌 About ExploreHorizons</h2>
+      <p>
+        At <strong>ExploreHorizons</strong>, we believe adventure is more than just a trip —
+        it’s a journey that awakens the soul. From the snowy peaks of the Himalayas to the tropical shores of Bali,
+        we curate unforgettable travel experiences that combine thrill, culture, and discovery.
+      </p>
+      <div class="about-columns">
+        <div class="about-box">
+          <h3>🌍 Our Mission</h3>
+          <p>To inspire people to explore beyond boundaries and make travel accessible, magical, and meaningful.</p>
+        </div>
+        <div class="about-box">
+          <h3>🎯 Our Vision</h3>
+          <p>We aim to become the #1 adventure travel brand, connecting explorers worldwide to unique, soul-stirring destinations.</p>
+        </div>
+        <div class="about-box">
+          <h3>✨ Our Values</h3>
+          <p>Passion, authenticity, sustainability, and above all — wanderlust!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Particle Background -->
+  <canvas id="aboutParticles"></canvas>
+
+  <section id="gallery" class="scroll-animate">
+    <h2 class="section-title">📸 Moments Captured</h2>
+    <div class="gallery-grid">
+      <img src="images/paris-city-centre-at-night.webp" alt="Paris" class="gallery-img" />
+      <img src="images/DSCF8935.webp" alt="Bali" class="gallery-img" />
+      <img src="images/Japan-2107x1406.webp" alt="Japan" class="gallery-img" />
+      <img src="images/Overview-dancing-Balinese.webp" alt="Explorer" class="gallery-img" />
+      <img src="images/Landscape Meru Betiri NP - East Java. Image credit Francesco Veronesi, CC BY-SA 2.0.webp" alt="Mountains" class="gallery-img" />
+      <img src="images/timo-wagner-8_mDu2wJ4ew-unsplash.webp" alt="Beach" class="gallery-img" />
+    </div>
+  
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+      
+      <img class="lightbox-content" id="lightboxImg" />
+      <span class="close-lightbox" id="closeLightbox">&times;</span>
+    </div>
+  </section>
+  
+  <!-- ===== Scripts ===== -->
+  <script>
+    // Hamburger toggle
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+    // Particle animation
+    const canvas = document.getElementById("aboutParticles");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = document.querySelector(".about-section").offsetHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const particles = Array.from({ length: 60 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
+    }));
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(178, 143, 255, 0.3)";
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+    const galleryImgs = document.querySelectorAll(".gallery-img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const closeLightbox = document.getElementById("closeLightbox");
+
+galleryImgs.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+  });
+});
+
+closeLightbox.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+  </script>
+
+</body>
+</html>

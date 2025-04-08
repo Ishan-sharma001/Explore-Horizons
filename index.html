@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Horizons | Tour & Travel</title>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+</head>
+
+<body>
+    <canvas id="particles"></canvas> <!-- Particle background -->
+
+
+    <nav class="navbar">
+        <div class="logo">🌍 ExploreHorizons</div>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Unleash Your Inner Explorer</h1>
+            <p>Discover hidden places, embark on new adventures, and travel beyond imagination.</p>
+            <a href="#destinations" class="btn-glow">Explore Now</a>
+        </div>
+    </header>
+
+    <section class="top-destinations scroll-animate">
+        <h2>Top Destinations</h2>
+        <div class="destinations-grid">
+            <div class="destination-card" data-title="Paris, France"
+                data-description="The City of Light offers history, romance, and world-famous landmarks like the Eiffel Tower."
+                data-image="images/paris-city-centre-at-night.webp">
+                <img src="images/paris-city-centre-at-night.webp" alt="Paris" />
+                <h3>Paris</h3>
+            </div>
+            <div class="destination-card" data-title="Bali, Indonesia"
+                data-description="A tropical paradise with beaches, temples, and lush green rice terraces."
+                data-image="images/DSCF8935.webp">
+                <img src="images/DSCF8935.webp" alt="Bali" />
+                <h3>Bali</h3>
+            </div>
+
+            <div class="destination-card" data-title="Japan"
+                data-description="Experience the blend of ancient traditions and modern innovation in Japan."
+                data-image="images/Japan-2107x1406.webp">
+                <img src="images/Japan-2107x1406.webp" alt="Japan" />
+                <h3>Japan</h3>
+            </div>
+
+
+        </div>
+        <div id="destinationModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img id="modalImage" src="" alt="Destination Image" />
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                <a href="#packages" class="btn-book-now">Book Now</a>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="adventure-packages scroll-animate" id="packages">
+        <h2>Adventure Packages</h2>
+        <div class="packages-grid">
+            <div class="package-card">
+                <h3>Mountain Escape</h3>
+                <p>3 Days in the Himalayas 🏔️</p>
+                <span class="price">₹12,999</span>
+                <button class="btn-book">Book Now</button>
+            </div>
+
+            <div class="package-card">
+                <h3>Island Retreat</h3>
+                <p>5 Nights in Maldives 🏝️</p>
+                <span class="price">₹22,499</span>
+                <button class="btn-book">Book Now</button>
+            </div>
+
+            <div class="package-card">
+                <h3>Desert Safari</h3>
+                <p>2 Days in Rajasthan 🐪</p>
+                <span class="price">₹7,999</span>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section scroll-animate" id="about">
+        <h2>Who We Are</h2>
+        <div class="about-content">
+            <p>
+                At <strong>ExploreHorizons</strong>, we’re not just a travel agency — we're your passport to wild
+                adventures,
+                hidden gems, and unforgettable memories. Our mission is to turn your travel dreams into real stories.
+                🌍✨
+            </p>
+            <p>
+                Whether you're craving serene mountains, mysterious forests, or vibrant city life, we’ve got the perfect
+                escape waiting just for you.
+            </p>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section scroll-animate">
+        <h2>Traveler Moments 📸</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox('images/Overview-dancing-Balinese.webp')">
+                <img src="images/Overview-dancing-Balinese.webp" alt="Traveler in mountains" />
+                <p>"Unforgettable views and magical vibes!"</p>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/timo-wagner-8_mDu2wJ4ew-unsplash.webp')">
+                <img src="images/timo-wagner-8_mDu2wJ4ew-unsplash.webp" alt="Beach adventure" />
+                <p>"The beach was glowing under the stars!"</p>
+            </div>
+            <div class="gallery-item"
+                onclick="openLightbox('images/Landscape Meru Betiri NP - East Java. Image credit Francesco Veronesi, CC BY-SA 2.0.webp')">
+                <img src="images/Landscape Meru Betiri NP - East Java. Image credit Francesco Veronesi, CC BY-SA 2.0.webp"
+                    alt="Forest trek" />
+                <p>"Trekking through the misty forest was surreal."</p>
+            </div>
+            <!-- Add more as needed -->
+        </div>
+        <div id="lightbox" class="lightbox">
+            <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+            <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged image" />
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>🌍 ExploreHorizons</h3>
+            <p>Making your dream journey a reality. Let's explore together!</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#destinations">Destinations</a>
+                <a href="#packages">Packages</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ExploreHorizons. Designed by Ishan Sharma 🌟</p>
+        </div>
+    </footer>
+
+
+
+    <script src="js/script.js"></script>
+</body>
+<script>
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+    });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    document.querySelectorAll(".scroll-animate .gallery-item").forEach((item) => {
+        observer.observe(item);
+    });
+
+    function openLightbox(imgSrc) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightboxImg");
+        lightboxImg.src = imgSrc;
+        lightbox.style.display = "flex";
+    }
+
+    function closeLightbox() {
+        document.getElementById("lightbox").style.display = "none";
+    }
+
+
+</script>
+
+</html>

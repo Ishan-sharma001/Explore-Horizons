@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Explore Horizons</title>
+  <link rel="stylesheet" href="css/navbar.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    nav.navbar {
+      background: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      color: #b28fff;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #b28fff;
+    }
+
+    .contact-container {
+      max-width: 700px;
+      margin: 5rem auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(178, 143, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(178, 143, 255, 0.1);
+    }
+
+    .contact-container h2 {
+      color: #b28fff;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .contact-container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-container input,
+    .contact-container textarea {
+      padding: 1rem;
+      margin: 0.7rem 0;
+      background: #111;
+      color: #fff;
+      border: 1px solid #b28fff;
+      border-radius: 8px;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .contact-container input:focus,
+    .contact-container textarea:focus {
+      box-shadow: 0 0 10px #b28fff;
+    }
+
+    .contact-container button {
+      padding: 1rem;
+      background: #b28fff;
+      color: #0a0a0a;
+      border: none;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 1rem;
+    }
+
+    .contact-container button:hover {
+      background: #a078ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">🌍 ExploreHorizons</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contact Form -->
+  <div class="contact-container scroll-animate">
+    <h2>📞 Get in Touch</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 ExploreHorizons. All rights reserved.
+  </footer>
+
+  <script>
+    // Add scroll animation
+    document.addEventListener("DOMContentLoaded", () => {
+      const animated = document.querySelector(".scroll-animate");
+      animated.style.opacity = 0;
+      animated.style.transform = "translateY(30px)";
+      setTimeout(() => {
+        animated.style.transition = "all 0.8s ease";
+        animated.style.opacity = 1;
+        animated.style.transform = "translateY(0)";
+      }, 300);
+    });
+  </script>
+</body>
+</html>
