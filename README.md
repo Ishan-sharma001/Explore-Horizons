@@ -8,7 +8,7 @@ This project is designed to impress with glowing effects, scroll-triggered anima
 
 ## 🚀 Live Demo
 
-🔗[Live Demo Link][https://your-live-demo-link.vercel.app](https://explore-horizons-tan.vercel.app/index.html#home))
+🔗[Live Demo Link](https://explore-horizons-tan.vercel.app/index.html#home)
 
 ---
 
